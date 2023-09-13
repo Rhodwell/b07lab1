@@ -13,12 +13,7 @@ public class Polynomial
 	}//end Polynomial()
 	public Polynomial(double[] coefficient)
 	{
-		int length = coefficient.length;
-		this.coefficient = new double[length];
-		for(int i=0; i<length; i++)
-		{
-			this.coefficient[i] = coefficient[i];
-		}//end loop
+		this.coefficient = coefficient.clone();
 	}//end Polynomial()
 	public Polynomial add(Polynomial poly)
 	{
