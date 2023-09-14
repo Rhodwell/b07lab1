@@ -5,19 +5,16 @@
 */
 public class Polynomial
 {
-	private double[] coefficient;
-
+	double[] coefficient;
 	public Polynomial()
 	{
 		coefficient = new double[1];
 		coefficient[0] = 0.0;
 	}// end Polynomial()
-
 	public Polynomial(double[] coefficient)
 	{
 		this.coefficient = coefficient.clone();
 	}// end Polynomial()
-
 	public Polynomial add(Polynomial poly)
 	{
 		double[] sum = poly.coefficient.clone();
@@ -28,7 +25,6 @@ public class Polynomial
 		Polynomial newPoly = new Polynomial(sum);
 		return newPoly;
 	}// end add()
-
 	public double evaluate(double xValue)
 	{
 		double result = 0;
@@ -38,7 +34,6 @@ public class Polynomial
 		} // end loop
 		return result;
 	}// end evaluate()
-
 	public boolean hasRoot(double xRoot)
 	{
 		return evaluate(xRoot) == 0;
