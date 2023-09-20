@@ -17,11 +17,23 @@ public class Polynomial
 	}// end Polynomial()
 	public Polynomial add(Polynomial poly)
 	{
-		double[] sum = poly.coefficient.clone();
-		for (int i = 0; i < coefficient.length; i++)
+		double[] sum;
+		if(poly.coefficient.length > coefficient.length)
 		{
-			sum[i] += coefficient[i];
-		} // end loop
+			sum = poly.coefficient.clone();
+			for (int i = 0; i < coefficient.length; i++)
+			{
+				sum[i] += coefficient[i];
+			} // end loop
+		}//end if
+		else
+		{
+			sum = coefficient.clone();
+			for (int i = 0; i < poly.coefficient.length; i++)
+			{
+				sum[i] += poly.coefficient[i];
+			} // end loop
+		}//end if
 		Polynomial newPoly = new Polynomial(sum);
 		return newPoly;
 	}// end add()
