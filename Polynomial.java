@@ -14,8 +14,8 @@ public class Polynomial
 	int[] exponent;
 	public Polynomial()
 	{
-		coefficient = new double[0];
-		exponent = new int[0];
+		coefficient = null;
+		exponent = null;
 	}// end Polynomial()
 	public Polynomial(double[] coefficient, int[] exponent)
 	{
@@ -30,13 +30,13 @@ public class Polynomial
 		while(fileRead.hasNextLine())
 		{
 			equation += fileRead.nextLine();
-		}
+		}//end loop
 		equation = equation.replace("-", "+-");
 		String[] splitConstant = equation.split("\\+");
 		for(String i: splitConstant)
 		{
 			if(i != "") counter++;
-		}
+		}//end loop
 		coefficient = new double[counter];
 		exponent = new int[counter];
 		counter = 0;
@@ -63,19 +63,20 @@ public class Polynomial
 		for(int i=0; i<list.length; i++)
 		{
 			if(list[i] > max) max = list[i];
-		}
+		}//end loop
 		return max;
-	}
+	}//end getMax
 	public int getIndex(int[] list, int value)
 	{
 		for(int i=0; i<list.length; i++)
 		{
 			if(list[i] == value) return i;
-		}
+		}//end loop
 		return -1;
-	}
+	}//getIndex
 	public Polynomial add(Polynomial newPoly)
 	{
+		if(newPoly.coefficient == null) return new Polynomial(coefficient, exponent);
 		int length = Math.max(getMax(exponent), getMax(newPoly.exponent)) + 1, counter = 0;
 		int[] tempExponent = new int[length];
 		double[] tempCoefficient = new double[length];
@@ -104,6 +105,7 @@ public class Polynomial
 	}// end add()
 	public Polynomial multiply(Polynomial newPoly)
 	{
+		if(newPoly.coefficient == null) return new Polynomial();
 		int counter = 0;
 		int[] indexCopy = new int[newPoly.exponent.length * exponent.length];
 		double[] tempCoefficient = new double[newPoly.coefficient.length * coefficient.length];
@@ -140,7 +142,7 @@ public class Polynomial
 		{
 			result += coefficient[i] * Math.pow(xValue, exponent[i]);
 		} // end loop
-		return result;
+		return Math.round(result * 10) / 10.0;
 	}// end evaluate()
 	public boolean hasRoot(double xRoot)
 	{
@@ -150,20 +152,25 @@ public class Polynomial
 	{
 		String equation = "";
 		if(!new File(fileName).createNewFile()) new FileWriter(fileName, false).close();
-		try (FileWriter file = new FileWriter(fileName)) {
-			for(int i=0; i<coefficient.length; i++)
+		try (FileWriter file = new FileWriter(fileName))
+		{
+			if(coefficient != null)
 			{
-				equation += ((exponent[i] == 0)? Math.round(coefficient[i]*10)/10.0: Math.round(coefficient[i]*10)/10.0 + "x" + exponent[i]) + ((i==exponent.length-1 || coefficient[i+1]<0)?"":"+");  
-			}//end loop
+				for(int i=0; i<coefficient.length; i++)
+				{
+					equation += ((exponent[i] == 0)? Math.round(coefficient[i]*10)/10.0: Math.round(coefficient[i]*10)/10.0 + "x" + exponent[i]) + ((i==exponent.length-1 || coefficient[i+1]<0)?"":"+");  
+				}//end loop
+			}//end if
 			file.write(equation);
-		}
+		}//end try
 	}//end saveToFile()
 	public String toString()
 	{
+		if(coefficient == null) return "0";
 		String equation = "";
 		for(int i=0; i<exponent.length; i++)
 		{
-			equation+=Math.round(coefficient[i]*10)/10.0+ "x" + exponent[i] + ((i==exponent.length-1 || coefficient[i+1]<0)?"":"+");
+			equation += ((exponent[i] == 0)? Math.round(coefficient[i]*10)/10.0: Math.round(coefficient[i]*10)/10.0 + "x" + exponent[i]) + ((i==exponent.length-1 || coefficient[i+1]<0)?"":"+");
 		}//end loop
 		return equation;
 	}//end toString()

@@ -20,29 +20,27 @@ public class Driver
 		//Testing Polynomial.add()
 		System.out.println("Addition");
 		System.out.println("--------");
-		System.out.println("No Argument + Two Arguments: " + noArgument.add(twoArguments));
-		System.out.println("No Argument + File Argument: " + noArgument.add(fileArgument));
+		System.out.println("Two Argument + No Arguments: " + twoArguments.add(noArgument));
+		System.out.println("File Argument + No Argument: " + fileArgument.add(noArgument));
 		System.out.println("Two Arguments + File Argument: " + twoArguments.add(fileArgument));
 		System.out.println("");
 		//Testing Polynomial.multply()
 		System.out.println("Multiplication");
 		System.out.println("--------------");
-		System.out.println("No Argument * Two Arguments: " + noArgument.multiply(twoArguments));
-		System.out.println("No Argument * File Arguments: " + noArgument.multiply(fileArgument));
+		System.out.println("Two Argument * No Arguments: " + twoArguments.multiply(noArgument));
+		System.out.println("File Argument * No Argument: " + fileArgument.multiply(noArgument));
 		System.out.println("Two Argument * File Arguments: " + twoArguments.multiply(fileArgument));
 		System.out.println();
 		//Testing Polynomial.evaluate()
 		System.out.println("Evaluate");
 		System.out.println("--------");
-		System.out.println("No Argument @ x=5: " + noArgument.evaluate(5));
-		System.out.println("Two Arguments @ x=5: " + twoArguments.evaluate(5));
+		System.out.println("Two Arguments @ x=0: " + twoArguments.evaluate(0));
 		System.out.println("File Arguments @ x=5: " + fileArgument.evaluate(5));
 		System.out.println();
 		//Testing Polynomial.hasRoot()
 		System.out.println("hasRoot");
 		System.out.println("--------");
-		System.out.println("No Argument @ x=5: " + noArgument.hasRoot(5));
-		System.out.println("Two Arguments @ x=5: " + twoArguments.hasRoot(5));
+		System.out.println("Two Arguments @ x=0: " + twoArguments.hasRoot(0));
 		System.out.println("File Arguments @ x=5: " + fileArgument.hasRoot(5));
 		//Testing Polynomial.saveToFile()
 		try 
