@@ -164,7 +164,7 @@ public class Polynomial
 			else
 			{
 				equation = "0";
-			}
+			}//end if
 			file.write(equation);
 		}//end try
 	}//end saveToFile()
@@ -178,4 +178,4 @@ public class Polynomial
 		}//end loop
 		return equation;
 	}//end toString()
-}
+}//end Polynomial Class
