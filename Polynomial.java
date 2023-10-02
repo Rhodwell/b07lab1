@@ -160,6 +160,10 @@ public class Polynomial
 				{
 					equation += ((exponent[i] == 0)? Math.round(coefficient[i]*10)/10.0: Math.round(coefficient[i]*10)/10.0 + "x" + exponent[i]) + ((i==exponent.length-1 || coefficient[i+1]<0)?"":"+");  
 				}//end loop
+			}
+			else
+			{
+				equation = "0";
 			}//end if
 			file.write(equation);
 		}//end try
