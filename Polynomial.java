@@ -133,7 +133,7 @@ public class Polynomial
 				}//end if
 			}//end loop
 		}//end loop
-		return new Polynomial(tempCoefficient, tempExponent).add(new Polynomial());
+		return new Polynomial(tempCoefficient, tempExponent).add(new Polynomial(new double[0], new int[0]));
 	}//end multiply()
 	public double evaluate(double xValue)
 	{
@@ -164,7 +164,7 @@ public class Polynomial
 			else
 			{
 				equation = "0";
-			}//end if
+			}
 			file.write(equation);
 		}//end try
 	}//end saveToFile()
